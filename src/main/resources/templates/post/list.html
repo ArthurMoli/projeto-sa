@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title> Feed | Batti-Papo</title>
+</head>
+<body>
+    <header class="header">
+        <div class="header-title">
+            <h1> Batti-Papo </h1>
+        </div>
+        <div class="header-menu">
+            <ul>
+                <li><button id="theme-toggle" onclick="darkmode()"> <i class="fa fa-moon"></i> </button></li>
+                <li><a class="link" href="/"> <i class="fa fa-home"></i> Home</a></li>
+                <li><a class="link" href="/search"> <i class="fa fa-search"></i> Explorar </a></li>
+                <li><a class="link" href="user/profile.html"> <i class="fa fa-user"></i> Meu Perfil </a></li>
+            </ul>
+        </div>
+    </header>
+    <main>
+        <div class="feed">
+            <div class="post-create">
+                <p> Pensou em algo? </p>
+                <a href="../post/add"> Crie seu post agora! </a>
+            </div>
+
+            <div th:each="post:${posts}" class="post-main">
+                <div class="user">
+                    <p class="user-handle"> @oTestador </p>
+                    <p class="user-name"> Testador </p>
+                </div>
+                <div class="post-content">
+                    <p th:text="${post.texto}"></p>
+                </div>
+            </div>
+    </main>
+</body>
+<script src="../js/index.js"></script>
+</html>

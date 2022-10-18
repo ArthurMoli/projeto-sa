@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Batti-Papo | Login</title>
+</head>
+<body>
+<header class="header">
+    <div class="header-title">
+        <h1> Batti-Papo </h1>
+    </div>
+    <div class="header-menu">
+        <ul>
+            <li><button id="theme-toggle" onclick="darkmode()"> <i class="fa fa-moon"></i> </button></li>
+            <li><a class="link" href="../"> <i class="fa fa-home"></i> Home</a></li>
+            <li><a class="link" href="../search"> <i class="fa fa-search"></i> Explorar </a></li>
+            <li><a class="link" href="./add"> <i class="fa fa-user"></i> Meu Perfil </a></li>
+        </ul>
+    </div>
+</header>
+
+<div th:if="${isSaved}" class="alerta-sucesso">
+    <h4> Alterações salvas</h4> <i class="fa fa-check-square"></i> 
+  </div>
+
+  <div th:if="${isError}" class="alerta-falha">
+    <h4> A Operação Falhou... </h4>
+    <label th:text="#{errorMsg}"></label>
+  </div>
+<form class="user-add" th:action="@{/usuario/save}" method="POST" th:object="${usuario}">
+
+    <h1> Edite seu perfil </h1>
+
+    <hr>
+
+    <div class="user-add-row">
+        <div class="user-add-answer">
+<label for="iUN"> Nome de Usuário </label>
+<input id="iUN" th:field="${usuario.username}" type="text" placeholder=" " required minlength="3" maxlength="16">
+</div>
+<div class="user-add-answer">
+<label for="iN"> Nome </label>
+<input id="iN" th:field="${usuario.nome}" type="text" placeholder=" " required>
+</div>
+<div class="user-add-answer">
+<label for="iSN"> Sobrenome </label>
+<input id="iSN" th:field="${usuario.sobrenome}" type="text" placeholder=" " required>
+</div>
+</div>
+<div class="user-add-row">
+    <div class="user-add-answer">
+        <label for="iID"> Idade </label>
+        <input id="iID" th:field="${usuario.idade}" type="number" placeholder=" " required>
+        </div>
+    <div class="user-add-answer">
+<label for="iE"> Email </label>
+<input  id="iE" th:field="${usuario.email}" type="email" placeholder=" " required>
+</div>
+<div class="user-add-answer">
+<label for="iPW"> Senha </label>
+<input id="iPW" th:field="${usuario.senha}" type="password" placeholder=" " required minlength="8" maxlength="20">
+</div>    
+</div>                 
+<button type="submit" class="btn"> <i class="fa fa-floppy"></i> Salvar Edições</button>
+</form>
+</body>
+<script src="../js/index.js"></script>
+</html>
